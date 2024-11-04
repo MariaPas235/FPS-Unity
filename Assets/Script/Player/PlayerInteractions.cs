@@ -27,15 +27,18 @@ public class PlayerInteractions : MonoBehaviour
 
 
         }
+
     }
 
-    private void OnCollisionEnter ( Collision collision)
+   private void OnControllerColliderHit(ControllerColliderHit hit)
+{
+    if (hit.gameObject.CompareTag("Enemigo"))
     {
-        if(collision.gameObject.CompareTag("EnemyBullet"))
-        {
-            GameManager.Instance.LoseHealth(5);
-        }
+        GameManager.Instance.LoseHealth(5);  // Reduce 5 puntos de vida al jugador
+        Debug.Log("Colisión detectada con el enemigo");  // Mensaje de depuración
     }
+}
+
 
 
     
